@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157188c80c348754fac72e9b967507ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: -30
+  _rotateSpeed: -60
 --- !u!1 &540788348
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157188c80c348754fac72e9b967507ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: -25
+  _rotateSpeed: -50
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c6f7555dff32c45b2958ed757d84e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.005
+  _speed: 0.01
 --- !u!1 &852314401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1a928417d093e45a04169ff95801f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleSpeed: 0.0005
+  _scaleSpeed: 0.001
   _light: {fileID: 1014638267}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
