@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed;
-    [SerializeField] float _scaleSpeed;
-
-    [SerializeField] Light _light;
+    [SerializeField] private float _moveSpeed;
 
     private void Update()
     {

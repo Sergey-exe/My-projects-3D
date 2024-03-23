@@ -62,9 +62,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Mover.cs" />
     <Compile Include="Assets\8K Skybox Pack Free\Example Scenes\Script\RotateCamera.cs" />
+    <Compile Include="Assets\Scripts\Size.cs" />
     <Compile Include="Assets\Scripts\Rotation.cs" />
-    <Compile Include="Assets\Scripts\Forward.cs" />
-    <Compile Include="Assets\Scripts\Scale.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\8K Skybox Pack Free\ReadMe.txt" />
