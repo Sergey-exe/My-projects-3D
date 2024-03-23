@@ -358,7 +358,7 @@
 "Assets/8K Skybox Pack Free/Example Scenes/Script/RotateCamera.cs"
 "Assets/Scripts/Mover.cs"
 "Assets/Scripts/Rotation.cs"
-"Assets/Scripts/Size.cs"
+"Assets/Scripts/SizeEnlarger.cs"
 -langversion:9.0
 
 /deterministic
