@@ -4,12 +4,14 @@ using UnityEngine.Events;
 
 public class Counter : MonoBehaviour
 {
-    [SerializeField] private float _number = 0;
-    [SerializeField] private float _delay = 0.5f;
+    [SerializeField, Min(0)] private float _number = 0;
+    [SerializeField, Min(0.1f)] private float _delay = 0.5f;
+
+    public event UnityAction NumberChange;
 
     private bool _isCountRun = false;
 
-    public event UnityAction NumberChange;
+    private Coroutine _coroutine;
 
     public float Number => _number;
 
@@ -20,11 +22,18 @@ public class Counter : MonoBehaviour
             _isCountRun = _isCountRun ? false : true;
 
             if (_isCountRun)
-                StartCoroutine(CountNext(_delay));
+            {
+                if (_coroutine != null)
+                {
+                    StopCoroutine(_coroutine);
+                }
+
+                _coroutine = StartCoroutine(CounterNumber(_delay));
+            }
         }
     }
 
-    private IEnumerator CountNext(float delay)
+    private IEnumerator CounterNumber(float delay)
     {
         var wait = new WaitForSeconds(delay);
 
