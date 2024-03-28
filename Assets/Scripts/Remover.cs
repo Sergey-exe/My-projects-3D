@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Remover : MonoBehaviour
 {
-    [SerializeField] private Enemy _enemy;
+    private Enemy _enemy;
 
     private void Awake()
     {
