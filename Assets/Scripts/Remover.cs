@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
+
 public class Remover : MonoBehaviour
 {
-    [SerializeField] private float _delay = 7;
+    [SerializeField] private Enemy _enemy;
 
-    private void Start()
+    private void Awake()
     {
-        Invoke(nameof(Remove), _delay);
+        _enemy = gameObject.GetComponent<Enemy>();
+    }
+
+    private void OnEnable()
+    {
+        _enemy.CurrentWaypoint += Remove;
+    }
+
+    private void OnDisable()
+    {
+        _enemy.CurrentWaypoint -= Remove;
     }
 
     private void Remove()
     {
-        Destroy(gameObject);
+        if(_enemy.LastPoint)
+            Destroy(gameObject);
     }
 }

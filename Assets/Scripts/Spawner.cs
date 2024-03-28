@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemies;
+    [SerializeField] private Transform[] _waypoints;
     [SerializeField, Min(0.5f)] private float _delay = 1;
+
+    public Transform[] Waypoint => _waypoints;
 
     private void Start()
     {
@@ -15,10 +19,8 @@ public class Spawner : MonoBehaviour
     {
         int indexSpawn = Random.Range(0, _enemies.Count);
 
-        float angleMax = 180;
-        float angle = Random.Range(0, angleMax);
+        _enemies[indexSpawn].SetWaypoint(Waypoint);
 
-        if (_enemies[indexSpawn].GetComponent<Enemy>())
-            Instantiate(_enemies[indexSpawn], transform.position, Quaternion.Euler(0, angle, 0));
+        Instantiate(_enemies[indexSpawn], transform.position, transform.rotation);
     }
 }

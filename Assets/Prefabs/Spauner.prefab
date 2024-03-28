@@ -47,5 +47,8 @@ MonoBehaviour:
   _enemies:
   - {fileID: 5496074713313884033, guid: 28760d4464af40a46b72f12eef3d79fe, type: 3}
   - {fileID: 6823271344494717069, guid: 39ed2596aac81d04c88d6bc2eb964e36, type: 3}
-  _rotation: {x: 0, y: 0, z: 0, w: 0}
+  _waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _delay: 2
