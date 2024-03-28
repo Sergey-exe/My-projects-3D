@@ -12,11 +12,6 @@ public class Enemy : MonoBehaviour
     private int _currentWaypoint = 0;
     public bool LastPoint => _currentWaypoint + 1 == _waypoints.Length - 1;
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (transform.position == _waypoints[_currentWaypoint].position)
