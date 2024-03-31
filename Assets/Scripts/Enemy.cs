@@ -7,14 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Transform[] _waypoints;
 
-<<<<<<< HEAD
-    [SerializeField] private int _currentWaypoint = 0;
-=======
-    public event Action CurrentWaypoint;
-
     private int _currentWaypoint = 0;
-    public bool LastPoint => _currentWaypoint + 1 == _waypoints.Length - 1;
->>>>>>> 961dd60f91a4dce4d8bec2225feae87162209fbf
 
     private void Update()
     {
