@@ -13,18 +13,12 @@ public class Enemy : MonoBehaviour
     {
         if (transform.position == _waypoints[_currentWaypoint].position)
         {
-            _currentWaypoint = (_currentWaypoint + 1);
-
-            if (_currentWaypoint == _waypoints.Length)
-                Destroy(gameObject);
-        }
-
-        if(_currentWaypoint >= _waypoints.Length)
-        {
-            return;
+            _currentWaypoint = (_currentWaypoint + 1) % _waypoints.Length;
         }
 
         transform.position = Vector3.MoveTowards(transform.position, _waypoints[_currentWaypoint].position, _speed * Time.deltaTime);
+
+        transform.LookAt(_waypoints[_currentWaypoint]);
     }
 
     public void SetWaypoint(Transform[] waypoints)
