@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410394926}
   m_Layer: 0
-  m_Name: Points
+  m_Name: Points1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,7 +7,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private float _delayShot;
 
     [SerializeField] private Rigidbody _bullet;
-    [SerializeField] private Transform _target;
+    [SerializeField] private Transform _target;//Изменения
 
     private void Start()
     {

@@ -27,7 +27,7 @@ public class Mover : MonoBehaviour
             ChangePoint();
     }
 
-    private void ChangePoint()
+    private void ChangePoint()//Изменения
     {
         _indexRemainingPoints = ++_indexRemainingPoints % _points.Length;
 
