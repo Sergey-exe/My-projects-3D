@@ -11,17 +11,17 @@ public class Cube : MonoBehaviour
 
     private void OnMouseUp()
     {
-        CubeClicked?.Invoke(gameObject.GetComponent<Cube>());
+        CubeClicked?.Invoke(this);
         
     }
 
-    public void ReducingProbability()
+    public void ReduceProbability()
     {
         int delimiter = 2;
         _fissionProbability /= delimiter;
     }
 
-    public void ReducingScale()
+    public void ReduceScale()
     {
         int delimiter = 2;
         transform.localScale /= delimiter;

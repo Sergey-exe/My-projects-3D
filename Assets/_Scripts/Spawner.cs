@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
 
     private void DestroyCube(Cube cube)
     {
+        cube.CubeClicked -= DestroyCube;
         Destroy(cube.gameObject);
     }
 }

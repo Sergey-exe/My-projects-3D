@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeDesigner : MonoBehaviour
 {
-    [SerializeField] Renderer _renderer;
+    [SerializeField] private Renderer _renderer;
     [SerializeField] private List<Material> _materials;
 
     private void Awake()

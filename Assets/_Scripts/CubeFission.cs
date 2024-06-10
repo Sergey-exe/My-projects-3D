@@ -36,13 +36,18 @@ public class CubeFission : MonoBehaviour
 
         for (int i = 0; i < resultingRandomNumber; i++)
         {
-            Cube newCube = _spawner.CreateCube(cube);
-            newCube.ReducingScale();
-            newCube.CubeClicked += Fission;
-            newCube.ReducingProbability();
-            newCubes.Add(newCube.GetComponent<Rigidbody>());
+            AddCube(cube, newCubes);
         }
 
         _cubeExplosion.Explode(newCubes, cube.transform);
+    }
+
+    private void AddCube(Cube cube, List<Rigidbody> newCubes)
+    {
+        Cube newCube = _spawner.CreateCube(cube);
+        newCube.ReduceScale();
+        newCube.CubeClicked += Fission;
+        newCube.ReduceProbability();
+        newCubes.Add(newCube.GetComponent<Rigidbody>());
     }
 }
