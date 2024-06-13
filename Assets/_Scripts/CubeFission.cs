@@ -12,16 +12,22 @@ public class CubeFission : MonoBehaviour
 
     private void Start()
     {
-        Cube startCube = _spawner.CreateCube(_prefab);
-        startCube.CubeClicked += Fission;
+        AddCube(_prefab);
     }
 
-    public void Fission(Cube cube)
+    public Cube AddCube(Cube cube)
+    {
+        Cube newCube = _spawner.CreateCube(cube);
+        newCube.CubeClicked += Fission;
+        return newCube;
+    }
+
+    private void Fission(Cube cube)
     {
         int resultingRandomNumber = Random.Range(0, _maxFissionProbability);
         cube.CubeClicked -= Fission;
 
-        if (resultingRandomNumber <= cube.FissionProbability) 
+        if (resultingRandomNumber <= cube.FissionProbability)
             CreateCubes(cube);
     }
 
@@ -36,18 +42,12 @@ public class CubeFission : MonoBehaviour
 
         for (int i = 0; i < resultingRandomNumber; i++)
         {
-            AddCube(cube, newCubes);
+            Cube newCube = AddCube(cube);
+            newCube.ReduceScale();
+            newCube.ReduceProbability();
+            newCubes.Add(newCube.GetComponent<Rigidbody>());
         }
 
         _cubeExplosion.Explode(newCubes, cube.transform);
-    }
-
-    private void AddCube(Cube cube, List<Rigidbody> newCubes)
-    {
-        Cube newCube = _spawner.CreateCube(cube);
-        newCube.ReduceScale();
-        newCube.CubeClicked += Fission;
-        newCube.ReduceProbability();
-        newCubes.Add(newCube.GetComponent<Rigidbody>());
     }
 }

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499d7292e9c519048b886dcfec1cf31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fissionProbability: 100
+  <FissionProbability>k__BackingField: 100
 --- !u!114 &1427337589236922569
 MonoBehaviour:
   m_ObjectHideFlags: 0

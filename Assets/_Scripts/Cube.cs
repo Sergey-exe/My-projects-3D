@@ -3,22 +3,19 @@ using UnityEngine.Events;
 
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private int _fissionProbability = 100;
+    [field: SerializeField] public int FissionProbability { get; private set; }
 
     public event UnityAction<Cube> CubeClicked;
-
-    public int FissionProbability => _fissionProbability;
 
     private void OnMouseUp()
     {
         CubeClicked?.Invoke(this);
-        
     }
 
     public void ReduceProbability()
     {
         int delimiter = 2;
-        _fissionProbability /= delimiter;
+        FissionProbability /= delimiter;
     }
 
     public void ReduceScale()
