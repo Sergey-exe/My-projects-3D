@@ -360,6 +360,7 @@
 "Assets/_Scripts/CubeExplosion.cs"
 "Assets/_Scripts/CubeFission.cs"
 "Assets/_Scripts/Spawner.cs"
+"Assets/_Scripts/UI.cs"
 -langversion:9.0
 
 /deterministic

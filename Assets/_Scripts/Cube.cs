@@ -5,11 +5,19 @@ public class Cube : MonoBehaviour
 {
     [field: SerializeField] public int FissionProbability { get; private set; }
 
-    public event UnityAction<Cube> CubeClicked;
+    public event UnityAction<Cube> Clicked;
 
     private void OnMouseUp()
     {
-        CubeClicked?.Invoke(this);
+        Clicked?.Invoke(this);
+    }
+
+    public Rigidbody Init()
+    {
+        ReduceProbability();
+        ReduceScale();
+
+        return GetComponent<Rigidbody>();
     }
 
     public void ReduceProbability()
