@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <FissionProbability>k__BackingField: 100
+  <ExplosionForce>k__BackingField: 500
+  <ExplosionRadios>k__BackingField: 100
 --- !u!114 &1427337589236922569
 MonoBehaviour:
   m_ObjectHideFlags: 0

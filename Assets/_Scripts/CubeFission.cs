@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.XR;
 
 public class CubeFission : MonoBehaviour
 {
@@ -29,6 +27,9 @@ public class CubeFission : MonoBehaviour
 
         if (resultingRandomNumber <= cube.FissionProbability)
             CreateCubes(cube);
+        else
+            _cubeExplosion.Explode(cube.transform);
+            
     }
 
 
@@ -45,7 +46,5 @@ public class CubeFission : MonoBehaviour
             Cube newCube = AddCube(cube);
             newCubes.Add(newCube.Init());
         }
-
-        _cubeExplosion.Explode(newCubes, cube.transform);
     }
 }

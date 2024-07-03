@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
-    private int CountDestroyedCubs;
+    private int _countDestroyedCubs;
 
     public event UnityAction<int> Destroyed;
 
@@ -21,7 +19,7 @@ public class Spawner : MonoBehaviour
     {
         cube.Clicked -= DestroyCube;
         Destroy(cube.gameObject);
-        CountDestroyedCubs++;
-        Destroyed?.Invoke(CountDestroyedCubs);
+        _countDestroyedCubs++;
+        Destroyed?.Invoke(_countDestroyedCubs);
     }
 }
