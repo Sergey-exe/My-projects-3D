@@ -61,11 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Cube.cs" />
-    <Compile Include="Assets\_Scripts\CubeDesigner.cs" />
-    <Compile Include="Assets\_Scripts\UI.cs" />
+    <Compile Include="Assets\_Scripts\Floor.cs" />
     <Compile Include="Assets\_Scripts\Spawner.cs" />
-    <Compile Include="Assets\_Scripts\CubeFission.cs" />
-    <Compile Include="Assets\_Scripts\CubeExplosion.cs" />
+    <Compile Include="Assets\_Scripts\CubeDesiner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

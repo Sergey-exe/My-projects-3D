@@ -1,53 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Cube : MonoBehaviour
+public class Cube : MonoBehaviour 
 {
-    public event UnityAction<Cube> Clicked;
+    [SerializeField] private CubeDesigner _cubeDesigner;
 
-    [field: SerializeField] public int FissionProbability { get; private set; }
+    public event UnityAction<Cube> IsCollision;
+    private bool _isCollision = false;
 
-    [field: SerializeField] public int ExplosionForce { get; private set; }
-
-    [field: SerializeField] public int ExplosionRadios { get; private set; }
-
-
-    private void OnMouseUp()
+    private void OnTriggerEnter(Collider other)
     {
-        Clicked?.Invoke(this);
+        if (_isCollision == false)
+        {
+            if (other.GetComponent<Floor>())
+            {
+                _isCollision = true;
+                _cubeDesigner.ChangeColor();
+                IsCollision?.Invoke(this);
+            }
+        }
     }
 
-    public Rigidbody Init()
+    public void ResetCube()
     {
-        ReduceProbability();
-        ReduceScale();
-        IncreaseExplosionForce();
-        IncreaseExplosionRadios();
-
-        return GetComponent<Rigidbody>();
-    }
-
-    public void ReduceProbability()
-    {
-        int delimiter = 2;
-        FissionProbability /= delimiter;
-    }
-
-    public void ReduceScale()
-    {
-        int delimiter = 2;
-        transform.localScale /= delimiter;
-    }
-
-    public void IncreaseExplosionForce()
-    {
-        int factor = 2;
-        ExplosionForce *= factor;
-    }
-
-    public void IncreaseExplosionRadios()
-    {
-        int factor = 2;
-        ExplosionRadios *= factor;
+        _isCollision = false;
+        _cubeDesigner.ResetMaterial();
     }
 }
