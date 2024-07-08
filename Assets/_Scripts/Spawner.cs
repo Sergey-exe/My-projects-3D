@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -35,6 +34,7 @@ public class Spawner : MonoBehaviour
         if (_spawnCoroutine == null)
             _spawnCoroutine = StartCoroutine(SpawnWithDelay());
     }
+
 
     private void ActionOnGet(Cube cube)
     {
@@ -84,17 +84,6 @@ public class Spawner : MonoBehaviour
 
     private void ReleaseCube(Cube cube)
     {
-        float lifeTimeSeconds = Random.Range(_minLifeTimeSeconds, _maxLifeTimeSeconds);
-
-        StartCoroutine(ReleaseWithDelay(cube, lifeTimeSeconds));
-    }
-
-    private IEnumerator ReleaseWithDelay(Cube cube, float delay)
-    {
-        WaitForSeconds wait = new WaitForSeconds(delay);
-
-        yield return wait;
-
         _cubesPool.Release(cube);
     }
 }
