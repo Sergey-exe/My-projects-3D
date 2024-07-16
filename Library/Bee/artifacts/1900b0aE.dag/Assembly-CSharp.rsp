@@ -355,10 +355,15 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"D:/Unity/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"D:/Unity/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/_Scripts/Bomb.cs"
+"Assets/_Scripts/BombDesigner.cs"
+"Assets/_Scripts/BombExploder.cs"
+"Assets/_Scripts/BombSpawner.cs"
 "Assets/_Scripts/Cube.cs"
 "Assets/_Scripts/CubeDesiner.cs"
+"Assets/_Scripts/CubeSpawner.cs"
 "Assets/_Scripts/Floor.cs"
-"Assets/_Scripts/Spawner.cs"
+"Assets/_Scripts/UI.cs"
 -langversion:9.0
 
 /deterministic

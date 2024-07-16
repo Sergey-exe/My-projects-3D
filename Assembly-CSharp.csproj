@@ -61,8 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Cube.cs" />
+    <Compile Include="Assets\_Scripts\UI.cs" />
+    <Compile Include="Assets\_Scripts\CubeSpawner.cs" />
     <Compile Include="Assets\_Scripts\Floor.cs" />
-    <Compile Include="Assets\_Scripts\Spawner.cs" />
+    <Compile Include="Assets\_Scripts\BombSpawner.cs" />
+    <Compile Include="Assets\_Scripts\BombDesigner.cs" />
+    <Compile Include="Assets\_Scripts\Bomb.cs" />
+    <Compile Include="Assets\_Scripts\BombExploder.cs" />
     <Compile Include="Assets\_Scripts\CubeDesiner.cs" />
   </ItemGroup>
   <ItemGroup>
