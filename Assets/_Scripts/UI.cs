@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class UI<T> : MonoBehaviour where T : Spawner
+public class UI<T, K> : MonoBehaviour where T : Spawner<K> where K : MonoBehaviour 
 {
     [SerializeField] private T _spawner;
     [SerializeField] private TextMeshProUGUI _countText;
@@ -10,13 +10,13 @@ public class UI<T> : MonoBehaviour where T : Spawner
     private void OnEnable()
     {
         _spawner.Spawn += ChangeCountText;
-        _spawner.Release += ChangeActiveText;
+        _spawner.ChangeActiveObject += ChangeActiveText;
     }
 
     private void OnDisable()
     {
         _spawner.Spawn -= ChangeCountText;
-        _spawner.Release -= ChangeActiveText;
+        _spawner.ChangeActiveObject -= ChangeActiveText;
     }
 
     protected void ChangeCountText(int number)
@@ -26,16 +26,6 @@ public class UI<T> : MonoBehaviour where T : Spawner
 
     protected void ChangeActiveText(int number)
     {
-        _countText.text = number.ToString();
+        _activeText.text = number.ToString();
     }
-}
-
-public class CubeSpawnerUI : UI<CubeSpawner>
-{
-
-}
-
-public class BombSpawnerUI : UI<BombSpawner>
-{
-
 }

@@ -67,7 +67,9 @@
     <Compile Include="Assets\_Scripts\Spawner.cs" />
     <Compile Include="Assets\_Scripts\BombSpawner.cs" />
     <Compile Include="Assets\_Scripts\BombDesigner.cs" />
+    <Compile Include="Assets\_Scripts\BombSpawnerUI.cs" />
     <Compile Include="Assets\_Scripts\Bomb.cs" />
+    <Compile Include="Assets\_Scripts\CubeSpawnerUI.cs" />
     <Compile Include="Assets\_Scripts\BombExploder.cs" />
     <Compile Include="Assets\_Scripts\CubeDesiner.cs" />
   </ItemGroup>

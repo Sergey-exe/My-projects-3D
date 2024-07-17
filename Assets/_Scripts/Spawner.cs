@@ -8,8 +8,6 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] private T _prefab;
     [SerializeField] private float _delay;
     [SerializeField] private float _countObjectsInSpawn;
-    [SerializeField] private float _maxLifeTimeSeconds;
-    [SerializeField] private float _minLifeTimeSeconds;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
     [SerializeField] private int _countSpawnObjects;
@@ -18,10 +16,11 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     private ObjectPool<T> _objectPool;
     private Coroutine _spawnCoroutine;
 
-    public float LifeTimeSeconds { get; private set; }
+    [field: SerializeField] public float MaxLifeTimeSeconds { get; private set; }
+    [field: SerializeField] public float MinLifeTimeSeconds { get; private set; }
 
     public event UnityAction<int> Spawn;
-    public event UnityAction<int> Release;
+    public event UnityAction<int> ChangeActiveObject;
 
     private void Awake()
     {
@@ -37,11 +36,6 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
         );
     }
 
-    private void OnEnable()
-    {
-        LifeTimeSeconds = Random.Range(_minLifeTimeSeconds, _maxLifeTimeSeconds);
-    }
-
     private void Update()
     {
         if(_globalSpawn)
@@ -49,10 +43,16 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
                 _spawnCoroutine = StartCoroutine(SpawnWithDelay());
     }
 
+    public void GetObjectFromPool(Transform transform)
+    {
+        T objectFromPool = _objectPool.Get();
+        objectFromPool.gameObject.transform.position = transform.position;
+    }
 
     public virtual void ActionOnGet(T spawnObject)
     {
         spawnObject.gameObject.SetActive(true);
+        ChangeActiveObject?.Invoke(_objectPool.CountActive);
     }
 
     public virtual T Create(Vector3 vector3)
@@ -61,19 +61,21 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
         _countSpawnObjects++;
         Spawn?.Invoke(_countSpawnObjects);
+        
 
         return spawnObject;
     }
 
     public virtual void Delete(T spawnObject)
     {
-        Destroy(spawnObject.gameObject, LifeTimeSeconds);
+        float lifeTimeSeconds = Random.Range(MinLifeTimeSeconds, MaxLifeTimeSeconds);
+        Destroy(spawnObject.gameObject, lifeTimeSeconds);
     }
 
     public virtual void ReleaseT(T spawnObject)
     {
         _objectPool.Release(spawnObject);
-        Release?.Invoke(_objectPool.CountActive);
+        ChangeActiveObject?.Invoke(_objectPool.CountActive);
     }
 
     protected Vector3 GetRandomPosition()

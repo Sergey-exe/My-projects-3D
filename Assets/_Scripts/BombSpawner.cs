@@ -6,14 +6,17 @@ public class BombSpawner : Spawner<Bomb>
 
     public override void ActionOnGet(Bomb bomb)
     {
+        float _explodeTimeSeconds = Random.Range(MinLifeTimeSeconds, MaxLifeTimeSeconds);
         bomb.ResetBomb();
         base.ActionOnGet(bomb);
+        bomb.Active(_explodeTimeSeconds);
     }
 
     public override Bomb Create(Vector3 vector3)
     {
+        float _explodeTimeSeconds = Random.Range(MinLifeTimeSeconds, MaxLifeTimeSeconds);
         Bomb bomb = base.Create(vector3);
-        bomb.Active(LifeTimeSeconds);
+        bomb.Active(_explodeTimeSeconds);
         bomb.Explode += ReleaseT;
         bomb.Explode += Explode;
 

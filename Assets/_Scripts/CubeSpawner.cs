@@ -29,6 +29,6 @@ public class CubeSpawner : Spawner<Cube>
     public override void ReleaseT(Cube cube)
     {
         base.ReleaseT(cube);
-        _bombSpawner.Create(cube.transform.position);
+        _bombSpawner.GetObjectFromPool(cube.transform);
     }
 }
