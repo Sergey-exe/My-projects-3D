@@ -1,31 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BombSpawner : MonoBehaviour
+public class BombSpawner : Spawner<Bomb>
 {
-    [SerializeField] private Bomb _prefab;
-    [SerializeField] private BombExploder _exploder;
-    [SerializeField] private int _maxTimeToExplode;
-    [SerializeField] private int _minTimeToExplode;
+    [SerializeField] BombExploder _exploder;
 
-    private void Awake()
+    public override void ActionOnGet(Bomb bomb)
     {
-        if(_minTimeToExplode > _maxTimeToExplode)
-            _minTimeToExplode = _maxTimeToExplode;
+        bomb.ResetBomb();
+        base.ActionOnGet(bomb);
     }
 
-    public void Spawn(Transform spawnPosition)
+    public override Bomb Create(Vector3 vector3)
     {
-        int timeExplode = Random.Range(_minTimeToExplode, _maxTimeToExplode);
-        Bomb bomb = Instantiate(_prefab, spawnPosition.position, spawnPosition.rotation);
-        bomb.Active(timeExplode);
+        Bomb bomb = base.Create(vector3);
+        bomb.Active(LifeTimeSeconds);
+        bomb.Explode += ReleaseT;
         bomb.Explode += Explode;
+
+        return bomb;
+    }
+
+    public override void Delete(Bomb bomb)
+    {
+        bomb.Explode -= ReleaseT;
+        bomb.Explode -= Explode;
+
+        base.Delete(bomb);
     }
 
     private void Explode(Bomb bomb)
     {
         _exploder.Explode(bomb.transform);
-        Destroy(bomb.gameObject);
     }
 }

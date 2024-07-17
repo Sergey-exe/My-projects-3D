@@ -8,13 +8,18 @@ public class Bomb : MonoBehaviour
 
     public event UnityAction<Bomb> Explode;
 
-    public void Active(int timeToExplosion)
+    public void Active(float timeToExplosion)
     {
         _bombDesigner.Active(timeToExplosion);
         StartCoroutine(CountdownToExplosion(timeToExplosion));
     }
 
-    private IEnumerator CountdownToExplosion(int timeToExplosion)
+    public void ResetBomb()
+    {
+        _bombDesigner.ResetMaterial();
+    }
+
+    private IEnumerator CountdownToExplosion(float timeToExplosion)
     {
         WaitForSeconds wait = new WaitForSeconds(timeToExplosion);
 

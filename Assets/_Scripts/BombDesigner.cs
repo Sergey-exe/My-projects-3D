@@ -7,12 +7,12 @@ public class BombDesigner : MonoBehaviour
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private Material _standardMaterial;
 
-    public void Active(int timeToExplosion)
+    public void Active(float timeToExplosion)
     {
         StartCoroutine(ReduceAlfa(timeToExplosion));
     }
 
-    private IEnumerator ReduceAlfa(int timeToExplosion)
+    private IEnumerator ReduceAlfa(float timeToExplosion)
     {
         Material newMaterial = Instantiate(_standardMaterial);
         _meshRenderer.material = newMaterial;
@@ -35,5 +35,10 @@ public class BombDesigner : MonoBehaviour
         float green = _meshRenderer.material.color.g;
         float blue = _meshRenderer.material.color.b;
         _meshRenderer.material.color = new Color(red, green, blue, alfa);
+    }
+
+    public void ResetMaterial()
+    {
+        _meshRenderer.material = _standardMaterial;
     }
 }

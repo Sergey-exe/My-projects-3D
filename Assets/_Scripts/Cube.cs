@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Cube : MonoBehaviour 
 {
-    [SerializeField] private CubeDesigner _cubeDesigner;
+    [SerializeField] private Designer _cubeDesigner;
     [SerializeField] private float _minLifeTime;
     [SerializeField] private float _maxLifeTime;
 
@@ -47,3 +47,5 @@ public class Cube : MonoBehaviour
         IsCollision?.Invoke(this);
     }
 }
+
+

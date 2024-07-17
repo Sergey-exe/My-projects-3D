@@ -1,91 +1,34 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.Pool;
+﻿using UnityEngine;
 
-public class CubeSpawner : MonoBehaviour
+public class CubeSpawner : Spawner<Cube>
 {
     [SerializeField] private BombSpawner _bombSpawner;
-    [SerializeField] private Cube _prefab;
-    [SerializeField] private float _delay;
-    [SerializeField] private float _countCubesInSpawn;
-    [SerializeField] private float _maxLifeTimeSeconds;
-    [SerializeField] private float _minLifeTimeSeconds;
-    [SerializeField] private int _poolCapacity;
-    [SerializeField] private int _poolMaxSize;
 
-    private ObjectPool<Cube> _cubesPool;
-    private Coroutine _spawnCoroutine;
-
-    private void Awake()
+    public override void ActionOnGet(Cube cube)
     {
-        _cubesPool = new ObjectPool<Cube>
-        ( 
-            createFunc : () => Spawn(),
-            actionOnGet : (cube) => ActionOnGet(cube),
-            actionOnRelease : (cube) => cube.gameObject.SetActive(false),
-            actionOnDestroy : (cube) => DeleteCube(cube),
-            collectionCheck : true,
-            defaultCapacity : _poolCapacity,
-            maxSize : _poolMaxSize
-        );
-    }
-
-    private void Update()
-    {
-        if (_spawnCoroutine == null)
-            _spawnCoroutine = StartCoroutine(SpawnWithDelay());
-    }
-
-
-    private void ActionOnGet(Cube cube)
-    {
-        cube.transform.position = GetRandomPosition();
-        cube.gameObject.SetActive(true);
         cube.ResetCube();
+        cube.transform.position = GetRandomPosition();
+        base.ActionOnGet(cube);
     }
 
-    private IEnumerator SpawnWithDelay()
+    public override Cube Create(Vector3 transform)
     {
-        WaitForSeconds wait = new WaitForSeconds(_delay);
-
-        for (int i = 0; i < _countCubesInSpawn; i++)
-            _cubesPool.Get();
-
-        yield return wait;
-
-        _spawnCoroutine = null;
-    }
-
-    private Cube Spawn()
-    {
-        Cube cube = Instantiate(_prefab, GetRandomPosition(), transform.rotation);
-        cube.IsCollision += ReleaseCube;
+        Cube cube = base.Create(GetRandomPosition());
+        cube.IsCollision += ReleaseT;
 
         return cube;
     }
 
-    private Vector3 GetRandomPosition()
+    public override void Delete(Cube cube)
     {
-        Bounds spawnArea = GetComponent<Collider>().bounds;
+        cube.IsCollision -= ReleaseT;
 
-        float positionX = Random.Range(spawnArea.min.x, spawnArea.max.x);
-        float positionY = Random.Range(spawnArea.min.y, spawnArea.max.y);
-        float positionZ = Random.Range(spawnArea.min.z, spawnArea.max.z);
-
-        return new Vector3(positionX, positionY, positionZ);
+        base.Delete(cube);
     }
 
-    private void DeleteCube(Cube cube)
+    public override void ReleaseT(Cube cube)
     {
-        float lifeTimeSeconds = Random.Range(_minLifeTimeSeconds, _maxLifeTimeSeconds);
-
-        cube.IsCollision -= ReleaseCube;
-        Destroy(cube.gameObject, lifeTimeSeconds);
-    }
-
-    private void ReleaseCube(Cube cube)
-    {
-        _bombSpawner.Spawn(cube.transform);
-        _cubesPool.Release(cube);
+        base.ReleaseT(cube);
+        _bombSpawner.Create(cube.transform.position);
     }
 }

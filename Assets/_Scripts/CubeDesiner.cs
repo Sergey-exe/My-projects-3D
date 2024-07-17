@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeDesigner: MonoBehaviour
+public class Designer : MonoBehaviour
 {
     [SerializeField] private Material _startMaterial;
     [SerializeField] private Material[] _materials;

@@ -363,6 +363,7 @@
 "Assets/_Scripts/CubeDesiner.cs"
 "Assets/_Scripts/CubeSpawner.cs"
 "Assets/_Scripts/Floor.cs"
+"Assets/_Scripts/Spawner.cs"
 "Assets/_Scripts/UI.cs"
 -langversion:9.0
 
