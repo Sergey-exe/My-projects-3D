@@ -241,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5594a4a06952534c82fc43e801f6de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 0.01
   <LoopType>k__BackingField: 2
@@ -539,7 +538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6167330cfa93f9140b2f617ea0fced58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 0.01
   <LoopType>k__BackingField: 2
@@ -732,7 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9023cc9535e4a1749b27ffd07ac3dca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 1
   <LoopType>k__BackingField: 1
@@ -864,7 +861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c67e33e730ea714faaf530b3496eb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 2
   <LoopType>k__BackingField: 2
@@ -967,7 +963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5594a4a06952534c82fc43e801f6de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 0.01
   <LoopType>k__BackingField: 2
@@ -984,7 +979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6167330cfa93f9140b2f617ea0fced58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 0.01
   <LoopType>k__BackingField: 2
@@ -1107,7 +1101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c67e33e730ea714faaf530b3496eb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 0
   <Repeats>k__BackingField: -1
   <Duration>k__BackingField: 2
   <LoopType>k__BackingField: 2
@@ -1227,13 +1220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a818e149327abb4f8b81ae191a87993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 2
   <Repeats>k__BackingField: 0
   <Duration>k__BackingField: 0
   <LoopType>k__BackingField: 0
   _textForChange1: "\u041F\u0440\u0438\u0432\u0435\u0442  \u041C\u0438\u0440!"
   _textForChange2: DOTween
   _textForChange3: ' 28.07.2024'
+  _delay: 1
   _text: {fileID: 164433966}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

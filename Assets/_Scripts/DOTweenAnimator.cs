@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class DOTweenAnimator : MonoBehaviour
 {
-    [field: SerializeField] public float Delay { get; private set; }
-
     [field: SerializeField] public int Repeats { get; private set; }
 
     [field: SerializeField] public float Duration { get; private set; }
